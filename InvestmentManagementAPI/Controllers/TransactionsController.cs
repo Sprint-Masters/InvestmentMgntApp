@@ -22,6 +22,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the Details of the transactions
+        /// </summary>
+        /// <returns>Displays all the transactions</returns>
         // GET: api/Transactions
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Transaction>>> GetTransaction()
@@ -30,6 +34,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Transactions.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get thye details of transactions by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the details of the transactions</returns>
         // GET: api/Transactions/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Transaction>> GetTransaction(int id)
@@ -45,6 +54,12 @@ namespace InvestmentManagementAPI.Controllers
             return transaction;
         }
 
+        /// <summary>
+        /// To Edit the transactions by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the edited details of Transactions</returns>
         // PUT: api/Transactions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -84,6 +99,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add new Transaction to the database
+        /// </summary>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the details of the Transaction</returns>
         // POST: api/Transactions
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -103,7 +123,11 @@ namespace InvestmentManagementAPI.Controllers
 
             return CreatedAtAction("GetTransaction", new { id = transaction.TransactionId }, transaction);
         }
-
+        /// <summary>
+        /// To delete the Transactions by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining details of Transactions</returns>
         // DELETE: api/Transactions/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTransaction(int id)

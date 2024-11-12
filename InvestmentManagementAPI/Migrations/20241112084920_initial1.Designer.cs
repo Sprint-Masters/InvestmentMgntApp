@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InvestmentManagementAPI.Migrations
 {
     [DbContext(typeof(InvestmentDBContext))]
-    [Migration("20241112080627_initial")]
-    partial class initial
+    [Migration("20241112084920_initial1")]
+    partial class initial1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

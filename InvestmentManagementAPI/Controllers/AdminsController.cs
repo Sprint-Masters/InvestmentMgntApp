@@ -23,6 +23,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the details of all the Admins
+        /// </summary>
+        /// <returns>Displays the Details of all Admins</returns>
         // GET: api/Admins
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Admin>>> GetAdmin()
@@ -31,6 +35,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Admins.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get the details of theAdmins by id 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays all the details of that id's Admin</returns>
         // GET: api/Admins/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Admin>> GetAdmin(int id)
@@ -45,6 +54,12 @@ namespace InvestmentManagementAPI.Controllers
             return admin;
         }
 
+        /// <summary>
+        /// To Edit the Details of the Admin by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="adminDTO"></param>
+        /// <returns>Displays the Details of the Edited Admin</returns>
         // PUT: api/Admins/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -84,6 +99,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add a new Admin
+        /// </summary>
+        /// <param name="adminDTO"></param>
+        /// <returns>Displays the Details of all the Admins</returns>
         // POST: api/Admins
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -102,6 +122,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetAdmin", new { id = admin.AdminId }, admin);
         }
 
+        /// <summary>
+        /// To Delete the Admin by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining Admins by id</returns>
         // DELETE: api/Admins/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAdmin(int id)

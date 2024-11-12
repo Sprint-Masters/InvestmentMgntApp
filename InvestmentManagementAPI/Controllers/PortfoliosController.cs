@@ -23,6 +23,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the Portfolios 
+        /// </summary>
+        /// <returns>Displays the Portfolios</returns>
         // GET: api/Portfolios
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Portfolio>>> GetPortfolio()
@@ -31,6 +35,10 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Portfolios.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get the Portfolios by id
+        /// </summary>
+        /// <returns>Displays the Portfolios of all</returns>
         // GET: api/Portfolios/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Portfolio>> GetPortfolio(int id)
@@ -46,6 +54,12 @@ namespace InvestmentManagementAPI.Controllers
             return portfolio;
         }
 
+        /// <summary>
+        /// To Edit the Portfolios by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="assetDTO"></param>
+        /// <returns>Displays the portfolios details </returns>
         // PUT: api/Portfolios/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -85,6 +99,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To add Portfolios
+        /// </summary>
+        /// <param name="portfolioDTO"></param>
+        /// <returns>Displays details of the portfolios</returns>
         // POST: api/Portfolios
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -104,6 +123,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetPortfolio", new { id = portfolio.PortfolioId }, portfolio);
         }
 
+        /// <summary>
+        /// To delete the portfolio
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining Portfolios</returns>
         // DELETE: api/Portfolios/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeletePortfolio(int id)

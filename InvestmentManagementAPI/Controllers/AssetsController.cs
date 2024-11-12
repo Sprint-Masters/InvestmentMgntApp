@@ -23,6 +23,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To get the details of the Assets of users
+        /// </summary>
+        /// <returns>displays the details of the Assets</returns>
         // GET: api/Assets
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Asset>>> GetAsset()
@@ -31,6 +35,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Assets.ToListAsync();
         }
 
+        /// <summary>
+        /// To get the Assets of Admin by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>displays the Asset details by id of that user</returns>
         // GET: api/Assets/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Asset>> GetAsset(int id)
@@ -46,6 +55,12 @@ namespace InvestmentManagementAPI.Controllers
             return asset;
         }
 
+        /// <summary>
+        /// To Edit the Assets of the user by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="assetDTO"></param>
+        /// <returns>Displays the Asset details of the user</returns>
         // PUT: api/Assets/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -87,6 +102,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add the Assets to the users
+        /// </summary>
+        /// <param name="assetDTO"></param>
+        /// <returns>Display the Assets details of the user</returns>
         // POST: api/Assets
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -108,6 +128,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetAsset", new { id = asset.AssetId }, asset);
         }
 
+        /// <summary>
+        /// To delete the Assets of a user
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Dispalys the remaining users assets</returns>
         // DELETE: api/Assets/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteAsset(int id)

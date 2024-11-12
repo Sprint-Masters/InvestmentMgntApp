@@ -23,6 +23,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the Reports
+        /// </summary>
+        /// <returns>Displays the Reports</returns>
         // GET: api/Reports
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Report>>> GetReport()
@@ -31,6 +35,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Reports.ToListAsync();
         }
 
+        /// <summary>
+        /// To get the reports by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the details of Reports</returns>
         // GET: api/Reports/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Report>> GetReport(int id)
@@ -46,6 +55,12 @@ namespace InvestmentManagementAPI.Controllers
             return report;
         }
 
+        /// <summary>
+        /// To Edit the Reports by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="reportDTO"></param>
+        /// <returns>Displays the Reports </returns>
         // PUT: api/Reports/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -84,6 +99,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add new Reports to the database
+        /// </summary>
+        /// <param name="reportDTO"></param>
+        /// <returns>Displays the report details of all the Reports</returns>
         // POST: api/Reports
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -103,6 +123,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetReport", new { id = report.ReportId }, report);
         }
 
+        /// <summary>
+        /// To delete the report
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the details of the remaining reports</returns>
         // DELETE: api/Reports/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteReport(int id)

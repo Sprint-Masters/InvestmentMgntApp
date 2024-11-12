@@ -23,6 +23,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the Details of the Users
+        /// </summary>
+        /// <returns>Displays all the Users</returns>
         // GET: api/Users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
@@ -31,6 +35,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Users.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get thye details of Users by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the details of the Users</returns>
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(int id)
@@ -46,6 +55,12 @@ namespace InvestmentManagementAPI.Controllers
             return user;
         }
 
+        /// <summary>
+        /// To Edit the Users by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the edited details of Users</returns>
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -86,6 +101,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add new Users to the database
+        /// </summary>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the details of the Users</returns>
         // POST: api/Users
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -105,6 +125,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetUser", new { id = user.UserId }, user);
         }
 
+        /// <summary>
+        /// To delete the Users by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining details of Users</returns>
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)

@@ -24,6 +24,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the details of the Risks
+        /// </summary>
+        /// <returns>Display the details of the Risks</returns>
         // GET: api/Risks
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Risk>>> GetRisk()
@@ -32,6 +36,10 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Risks.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get the details of the Risks by id
+        /// </summary>
+        /// <returns>Display the details of all the Risks</returns>
         // GET: api/Risks/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Risk>> GetRisk(int id)
@@ -47,6 +55,12 @@ namespace InvestmentManagementAPI.Controllers
             return risk;
         }
 
+        /// <summary>
+        /// To Edit the details of Risks by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="riskDTO"></param>
+        /// <returns>Displays the edited Risks</returns>
         // PUT: api/Risks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -85,6 +99,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To add new Risks
+        /// </summary>
+        /// <param name="riskDTO"></param>
+        /// <returns>Displays all the Risks available</returns>
         // POST: api/Risks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -104,6 +123,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetRisk", new { id = risk.RiskId }, risk);
         }
 
+        /// <summary>
+        /// To delete the risk by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining risks available</returns>
         // DELETE: api/Risks/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRisk(int id)

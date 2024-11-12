@@ -24,6 +24,10 @@ namespace InvestmentManagementAPI.Controllers
             _logger = logger;
         }
 
+        /// <summary>
+        /// To Get the Details of the Roles
+        /// </summary>
+        /// <returns>Displays all the roles</returns>
         // GET: api/Roles
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Role>>> GetRole()
@@ -32,6 +36,11 @@ namespace InvestmentManagementAPI.Controllers
             return await _context.Roles.ToListAsync();
         }
 
+        /// <summary>
+        /// To Get thye details of roles by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the details of the Roles</returns>
         // GET: api/Roles/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Role>> GetRole(int id)
@@ -47,6 +56,12 @@ namespace InvestmentManagementAPI.Controllers
             return role;
         }
 
+        /// <summary>
+        /// To Edit the Roles by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the edited details of Roles</returns>
         // PUT: api/Roles/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
@@ -83,6 +98,11 @@ namespace InvestmentManagementAPI.Controllers
             return NoContent();
         }
 
+        /// <summary>
+        /// To Add new Roles to the database
+        /// </summary>
+        /// <param name="roleDTO"></param>
+        /// <returns>Displays the details of the Roles</returns>
         // POST: api/Roles
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
@@ -98,6 +118,11 @@ namespace InvestmentManagementAPI.Controllers
             return CreatedAtAction("GetRole", new { id = role.RoleId }, role);
         }
 
+        /// <summary>
+        /// To delete the Roles by id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns>Displays the remaining details of roles</returns>
         // DELETE: api/Roles/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteRole(int id)
