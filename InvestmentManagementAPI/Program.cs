@@ -1,7 +1,7 @@
 using InvestmentManagementAPI.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
-using Serilog;
+using Serilog; 
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
@@ -22,10 +22,21 @@ Log.Logger = new LoggerConfiguration()
 
 Log.Information("Started");
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        policyBuilder => policyBuilder.AllowAnyOrigin()
+                                     .AllowAnyMethod()
+                                     .AllowAnyHeader());
+
+});
+
 // Add services to the container.
 builder.Host.UseSerilog();
 
 var app = builder.Build();
+
+app.UseCors("AllowAllOrigins");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
