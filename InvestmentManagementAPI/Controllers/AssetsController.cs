@@ -112,6 +112,7 @@ namespace InvestmentManagementAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Asset>> PostAsset(AssetDTO assetDTO)
         {
+            //hi
             Asset asset = new Asset();
             asset.AssetId = assetDTO.AssetId;
             asset.PortfolioId = assetDTO.PortfolioId;
